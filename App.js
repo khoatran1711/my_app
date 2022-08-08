@@ -14,7 +14,7 @@ import HomeScreen from "./Screens/Screen/HomeScreen/HomeScreen";
 import FindingScreen from "./Screens/Screen/FindingScreen/FindingScreen";
 import ProductScreen from "./Screens/Screen/ProductScreen/ProductScreen";
 import UserInfo from "./Screens/Screen/UserInfoScreen/UserInfo";
-import Upload_image from "./Screens/Screen/upload_image";
+
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -34,7 +34,7 @@ export default function App() {
           headerShown: false,
         }}
       >
-          <Stack.Screen name="test" component={Upload_image} />
+        
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Product" component={ProductScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />

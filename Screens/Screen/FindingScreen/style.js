@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     width: (width * 70) / 100,
     height: (width * 10) / 100,
     marginTop: (width * 1) / 100,
-    marginLeft: "5%",
+    marginLeft: "0%",
     fontSize: width / 20,
   },
   forUserIcon: {
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   forFindingProductImage: {
-    top: "10%",
+    top: "4%",
     marginLeft: "5%",
     width: "40%",
     height: "80%",
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     width: "40%",
     height: "80%",
     marginLeft: "5%",
-    top: "10%",
+    top: "4%",
   },
   forFindingProductName: {
     fontSize: 15,

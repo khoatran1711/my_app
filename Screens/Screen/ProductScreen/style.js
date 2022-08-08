@@ -11,14 +11,14 @@ const styles = StyleSheet.create({
     resizeMode: "stretch",
   },
   forProductName: {
-    marginTop: (width * 8) / 100,
+    marginTop: (width * 0) / 100,
     textAlign: "center",
     width: width,
     fontSize: (width * 8) / 100,
     color: color.yellow,
   },
   forProductImage: {
-    marginTop: (width * 10) / 100,
+    marginTop: (width * 0) / 100,
     marginLeft: (width * 10) / 100,
     width: (width * 80) / 100,
     height: (width * 50) / 100,
