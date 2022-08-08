@@ -14,10 +14,12 @@ import HomeScreen from "./Screens/Screen/HomeScreen/HomeScreen";
 import FindingScreen from "./Screens/Screen/FindingScreen/FindingScreen";
 import ProductScreen from "./Screens/Screen/ProductScreen/ProductScreen";
 import UserInfo from "./Screens/Screen/UserInfoScreen/UserInfo";
+import ChangingScreen from "./Screens/Screen/ChangingScreen/ChangingScreen";
 
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -34,13 +36,14 @@ export default function App() {
           headerShown: false,
         }}
       >
-        
+        <Stack.Screen name="Changing" component={ChangingScreen}/>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Product" component={ProductScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Finding" component={FindingScreen} />
         <Stack.Screen name="UserInfo" component={UserInfo} />
+     
       
       </Stack.Navigator>
     </NavigationContainer>
