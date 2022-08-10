@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     height: width / 8,
     width: (width * 94) / 100,
     backgroundColor: "white",
-    marginLeft: "3%",
+    marginLeft: (width * 5) / 100,
     marginTop: "5%",
     flexDirection: "row",
   },

@@ -15,7 +15,9 @@ import testproduct from "./../../Pictures/test_product.png";
 
 const width = Dimensions.get("screen").width;
 
-const ProductScreen = ({ navigation }) => {
+const ProductScreen = ({ route, navigation }) => {
+  var product = route.params;
+  console.log(product);
   return (
     <ImageBackground
       source={imagebackground}
@@ -32,13 +34,15 @@ const ProductScreen = ({ navigation }) => {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image source={lefticon} style={styles.forLeftIcon}></Image>
         </TouchableOpacity>
-        <Text style={styles.forProductName}>My new product name</Text>
-        <Image style={styles.forProductImage} source={testproduct}></Image>
-        <Text style={styles.forProductPrice}> $10.0</Text>
+        <Text style={styles.forProductName}>{product.name_product}</Text>
+        <Image
+          style={styles.forProductImage}
+          source={{ uri: product.imagedata }}
+        ></Image>
+        <Text style={styles.forProductPrice}> $ {product.price_product}</Text>
         <Text style={styles.forProductDesciption}>
           {" "}
-          Description about the cake is that it is Description about the cake is
-          that it is{" "}
+          {product.description_product}{" "}
         </Text>
       </ScrollView>
     </ImageBackground>

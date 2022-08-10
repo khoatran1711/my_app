@@ -8,7 +8,7 @@ import {
   Image,
   Platform,
 } from "react-native";
-import LoginScreen from "./Screens/Screen/LoginSreen/LoginScreen";
+import LoginScreen from "./Screens/Screen/LoginScreen/LoginScreen";
 import SignupScreen from "./Screens/Screen/SignupScreen/SignupScreen";
 import HomeScreen from "./Screens/Screen/HomeScreen/HomeScreen";
 import FindingScreen from "./Screens/Screen/FindingScreen/FindingScreen";
@@ -36,13 +36,12 @@ export default function App() {
           headerShown: false,
         }}
       >
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Signup" component={SignupScreen} />
+        <Stack.Screen name="HomeManage" component={HomeMangeScreen} />
         <Stack.Screen name="Changing" component={ChangingScreen} />
         <Stack.Screen name="Adding" component={AddingScreen} />
-        <Stack.Screen name="HomeMange" component={HomeMangeScreen} />
-
-        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Product" component={ProductScreen} />
-        <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Finding" component={FindingScreen} />
         <Stack.Screen name="UserInfo" component={UserInfo} />

@@ -1,4 +1,5 @@
 import react from "react";
+import { useState } from "react";
 import { StatusBar } from "react-native";
 import { Button, StyleSheet, TextInput, Platform } from "react-native";
 import { Image, Text, View } from "react-native";
@@ -8,6 +9,8 @@ import { Touchable, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import { UsePostUser } from "../../../Data_query/Query.queries";
+
 import imagebackground from "./../../Pictures/background.png";
 import title from "./../../Pictures/title_signup.png";
 import logo from "./../../Pictures/logo_signup.png";
@@ -16,7 +19,44 @@ import password from "./../../Pictures/password.png";
 import email from "./../../Pictures/email.png";
 import phone from "./../../Pictures/phone-call.png";
 
+var user_info_register = {
+  user_account: "",
+  user_password: "",
+  user_mail: "",
+  user_phone: "",
+};
+
 const SignupScreen = ({ navigation }) => {
+  const myPostUser = UsePostUser();
+  const [account_text, setAccount] = useState("");
+  const [password_text, setPassword] = useState("");
+  const [mail_text, setMail] = useState("");
+  const [phone_text, setPhone] = useState("");
+
+  function ChangeAccount(new_text) {
+    setAccount(new_text);
+    user_info_register.user_account = new_text;
+    global.regis_user = user_info_register;
+  }
+
+  function ChangePassword(new_text) {
+    setAccount(new_text);
+    user_info_register.user_password = new_text;
+    global.regis_user = user_info_register;
+  }
+
+  function ChangeMail(new_text) {
+    setAccount(new_text);
+    user_info_register.user_mail = new_text;
+    global.regis_user = user_info_register;
+  }
+
+  function ChangePhone(new_text) {
+    setAccount(new_text);
+    user_info_register.user_phone = new_text;
+    global.regis_user = user_info_register;
+  }
+
   return (
     <ImageBackground
       source={imagebackground}
@@ -42,6 +82,7 @@ const SignupScreen = ({ navigation }) => {
           style={styles.forInputText}
           placeholder="Your account"
           placeholderTextColor="white"
+          onChangeText={ChangeAccount}
         ></TextInput>
       </View>
       <View style={styles.forInputComponent}>
@@ -50,6 +91,7 @@ const SignupScreen = ({ navigation }) => {
           style={styles.forInputText}
           placeholder="Your password"
           placeholderTextColor="white"
+          onChangeText={ChangePassword}
         ></TextInput>
       </View>
 
@@ -59,6 +101,7 @@ const SignupScreen = ({ navigation }) => {
           style={styles.forInputText}
           placeholder="Your email"
           placeholderTextColor="white"
+          onChangeText={ChangeMail}
         ></TextInput>
       </View>
 
@@ -68,6 +111,7 @@ const SignupScreen = ({ navigation }) => {
           style={styles.forInputText}
           placeholder="Your phone"
           placeholderTextColor="white"
+          onChangeText={ChangePhone}
         ></TextInput>
       </View>
 
@@ -78,17 +122,7 @@ const SignupScreen = ({ navigation }) => {
         Your already have an account? Login now{" "}
       </Text>
 
-      <TouchableOpacity title="Login" style={styles.forButton}>
-        <Text
-          style={{
-            color: "white",
-            fontSize: 20,
-            textAlign: "center",
-          }}
-        >
-          Sign up
-        </Text>
-      </TouchableOpacity>
+      {myPostUser}
 
       <View
         style={{

@@ -76,7 +76,6 @@ const LoginScreen = ({ navigation }) => {
       <View style={styles.forInputComponent}>
         <Image source={account} style={styles.forIcon} />
         <TextInput
-          nativeID="hello"
           style={styles.forInputText}
           placeholder="Your account"
           placeholderTextColor="white"
@@ -93,24 +92,13 @@ const LoginScreen = ({ navigation }) => {
         ></TextInput>
       </View>
       <Text style={styles.forSuggestion}>Forgot your password?</Text>
-      <TouchableOpacity style={styles.forButton}>
-        <Text
-          style={{
-            color: "white",
-            fontSize: 20,
-            textAlign: "center",
-          }}
-        >
-          Login
-        </Text>
-      </TouchableOpacity>
+      {withMyHook}
       <Text
         style={styles.forCreateAccount}
         onPress={() => navigation.navigate("Signup")}
       >
         You dont have an account ? Create now
       </Text>
-      {withMyHook}
     </ImageBackground>
   );
 };

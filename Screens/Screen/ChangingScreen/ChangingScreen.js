@@ -14,6 +14,10 @@ import styles from "./style";
 import color from "../colors";
 import * as ImagePicker from "expo-image-picker";
 
+import { UsePutProduct } from "../../../Data_query/Query.queries";
+import { UseGetAProduct } from "../../../Data_query/Query.queries";
+import { UseDeleteProduct } from "../../../Data_query/Query.queries";
+
 import imagebackground from "./../../Pictures/background_manage.png";
 import lefticon from "./../../Pictures/left_icon.png";
 import test_product from "./../../Pictures/test_product.png";
@@ -26,8 +30,46 @@ var options = {
     path: "images",
   },
 };
-const ChangingScreen = ({ navigation }) => {
+const ChangingScreen = ({ route, navigation }) => {
+  const product_id = route.params.id_product;
+  const product = UseGetAProduct(product_id);
+  global.changingproduct = product;
+  const old_product = UseGetAProduct(product_id);
   const [image, setImage] = useState(null);
+  const [name_text, setName_text] = useState(product.name_product);
+  const [price_text, setPrice_value] = useState(product.price_product);
+  const [description_text, setDescription_text] = useState(
+    product.description_product
+  );
+  const [category_text, setCategory_text] = useState(product.category_product);
+
+  function ChangeName(new_text) {
+    setName_text(new_text);
+    product.name_product = new_text;
+    global.changingproduct = product;
+  }
+
+  function ChangePrice(new_text) {
+    var new_value = parseInt(new_text);
+    setPrice_value(new_value);
+    product.price_product = new_value;
+    global.changing_product = product;
+  }
+
+  function ChangeDescription(new_text) {
+    setDescription_text(new_text);
+    product.description_product = new_text;
+    global.changingproduct = product;
+  }
+
+  function ChangeCategory(new_text) {
+    setCategory_text(new_text);
+    product.description_product = new_text;
+    global.changingproduct = product;
+  }
+
+  const putProduct = UsePutProduct();
+  const deleteProduct = UseDeleteProduct();
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -38,7 +80,9 @@ const ChangingScreen = ({ navigation }) => {
       quality: 1,
     });
 
-    console.log(result);
+    console.log("result", result.uri);
+    product.imagedata = result.uri;
+    global.changingproduct = product;
 
     if (!result.cancelled) {
       setImage(result.uri);
@@ -59,29 +103,47 @@ const ChangingScreen = ({ navigation }) => {
       }}
     >
       <ScrollView>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity
+          onPress={() => {
+            console.log("my_old_product", old_product);
+            global.changingproduct = old_product;
+            console.log("my_global", global.changingproduct);
+            navigation.goBack();
+          }}
+        >
           <Image source={lefticon} style={styles.forLeftIcon}></Image>
         </TouchableOpacity>
-        <TextInput style={styles.forChangingInput} value="ID"></TextInput>
+        <TextInput
+          style={styles.forChangingInput}
+          value={product.id_product}
+        ></TextInput>
         <TextInput
           style={styles.forChangingInput}
           placeholder="Name"
           placeholderTextColor={color.yellow}
+          defaultValue={product.name_product}
+          onChangeText={ChangeName}
         ></TextInput>
         <TextInput
           style={styles.forChangingInput}
           placeholder="Price"
           placeholderTextColor={color.yellow}
+          defaultValue={product.price_product}
+          onChangeText={ChangePrice}
         ></TextInput>
         <TextInput
           style={styles.forChangingInput}
           placeholder="Description Description Description Description "
           placeholderTextColor={color.yellow}
+          defaultValue={product.description_product}
+          onChangeText={ChangeDescription}
         ></TextInput>
         <TextInput
           style={styles.forChangingInput}
           placeholder="Category"
           placeholderTextColor={color.yellow}
+          defaultValue={product.category_product}
+          onChangeText={ChangeCategory}
         ></TextInput>
         <TouchableOpacity
           style={styles.forButton}
@@ -90,15 +152,14 @@ const ChangingScreen = ({ navigation }) => {
         >
           <Text style={styles.forTextInOpaTouch}>Upload Image</Text>
         </TouchableOpacity>
-        {image && (
-          <Image source={{ uri: image }} style={styles.forChaningImage} />
-        )}
-        <TouchableOpacity style={styles.forButton}>
-          <Text style={styles.forTextInOpaTouch}>Change</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.forButton}>
-          <Text style={styles.forTextInOpaTouch}>Delete</Text>
-        </TouchableOpacity>
+        {
+          <Image
+            source={{ uri: image ? image : product.imagedata }}
+            style={styles.forChaningImage}
+          />
+        }
+        {putProduct}
+        {deleteProduct}
       </ScrollView>
     </ImageBackground>
   );

@@ -9,6 +9,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import styles from "./style";
 
+import { UseGetAllProduct } from "../../../Data_query/Query.queries";
+
 import imagebackground from "./../../Pictures/background.png";
 import usericon from "./../../Pictures/user_icon.png";
 import searchicon from "./../../Pictures/search_icon.png";
@@ -25,8 +27,8 @@ import testproduct from "./../../Pictures/test_product.png";
 
 const width = Dimensions.get("window").width;
 const HomeScreen = ({ navigation }) => {
-  console.log(color);
-  console.log(width);
+  var listProduct = UseGetAllProduct();
+  console.log("my products : ", listProduct);
   return (
     <ImageBackground
       source={imagebackground}
@@ -85,218 +87,38 @@ const HomeScreen = ({ navigation }) => {
           <Image source={hottile} style={styles.forHottile}></Image>
 
           <View style={styles.forHotProductsContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate("Product")}>
-              <ImageBackground
-                source={productbackground}
-                style={styles.forHotProductContainer}
-              >
-                <Image
-                  source={testproduct}
-                  style={styles.forHotProductImage}
-                ></Image>
-                <View style={styles.forHotProductInfo}>
-                  <Text style={styles.forHotProductName}>My new product</Text>
-                  <Text style={styles.forHotProductPrice}>$10.0</Text>
-                  <Text
-                    style={styles.forHotProductDescription}
-                    numberOfLines={3}
+            {listProduct.length > 0
+              ? listProduct.map((product) => (
+                  <TouchableOpacity
+                    key={product.id_product}
+                    onPress={() => navigation.navigate("Product", product)}
                   >
-                    Description about the cake is that it is Description about
-                    the cake is that it is
-                  </Text>
-                </View>
-              </ImageBackground>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <ImageBackground
-                source={productbackground}
-                style={styles.forHotProductContainer}
-              >
-                <Image
-                  source={testproduct}
-                  style={styles.forHotProductImage}
-                ></Image>
-                <View style={styles.forHotProductInfo}>
-                  <Text style={styles.forHotProductName}>My new product</Text>
-                  <Text style={styles.forHotProductPrice}>$10.0</Text>
-                  <Text
-                    style={styles.forHotProductDescription}
-                    numberOfLines={3}
-                  >
-                    Description about the cake is that it is
-                  </Text>
-                </View>
-              </ImageBackground>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <ImageBackground
-                source={productbackground}
-                style={styles.forHotProductContainer}
-              >
-                <Image
-                  source={testproduct}
-                  style={styles.forHotProductImage}
-                ></Image>
-                <View style={styles.forHotProductInfo}>
-                  <Text style={styles.forHotProductName}>My new product</Text>
-                  <Text style={styles.forHotProductPrice}>$10.0</Text>
-                  <Text
-                    style={styles.forHotProductDescription}
-                    numberOfLines={3}
-                  >
-                    Description about the cake is that it is
-                  </Text>
-                </View>
-              </ImageBackground>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <ImageBackground
-                source={productbackground}
-                style={styles.forHotProductContainer}
-              >
-                <Image
-                  source={testproduct}
-                  style={styles.forHotProductImage}
-                ></Image>
-                <View style={styles.forHotProductInfo}>
-                  <Text style={styles.forHotProductName}>My new product</Text>
-                  <Text style={styles.forHotProductPrice}>$10.0</Text>
-                  <Text
-                    style={styles.forHotProductDescription}
-                    numberOfLines={3}
-                  >
-                    Description about the cake is that it is
-                  </Text>
-                </View>
-              </ImageBackground>
-            </TouchableOpacity>
-
-            <TouchableOpacity>
-              <ImageBackground
-                source={productbackground}
-                style={styles.forHotProductContainer}
-              >
-                <Image
-                  source={testproduct}
-                  style={styles.forHotProductImage}
-                ></Image>
-                <View style={styles.forHotProductInfo}>
-                  <Text style={styles.forHotProductName}>My new product</Text>
-                  <Text style={styles.forHotProductPrice}>$10.0</Text>
-                  <Text
-                    style={styles.forHotProductDescription}
-                    numberOfLines={3}
-                  >
-                    Description about the cake is that it is
-                  </Text>
-                </View>
-              </ImageBackground>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <ImageBackground
-                source={productbackground}
-                style={styles.forHotProductContainer}
-              >
-                <Image
-                  source={testproduct}
-                  style={styles.forHotProductImage}
-                ></Image>
-                <View style={styles.forHotProductInfo}>
-                  <Text style={styles.forHotProductName}>My new product</Text>
-                  <Text style={styles.forHotProductPrice}>$10.0</Text>
-                  <Text
-                    style={styles.forHotProductDescription}
-                    numberOfLines={3}
-                  >
-                    Description about the cake is that it is
-                  </Text>
-                </View>
-              </ImageBackground>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <ImageBackground
-                source={productbackground}
-                style={styles.forHotProductContainer}
-              >
-                <Image
-                  source={testproduct}
-                  style={styles.forHotProductImage}
-                ></Image>
-                <View style={styles.forHotProductInfo}>
-                  <Text style={styles.forHotProductName}>My new product</Text>
-                  <Text style={styles.forHotProductPrice}>$10.0</Text>
-                  <Text
-                    style={styles.forHotProductDescription}
-                    numberOfLines={3}
-                  >
-                    Description about the cake is that it is
-                  </Text>
-                </View>
-              </ImageBackground>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <ImageBackground
-                source={productbackground}
-                style={styles.forHotProductContainer}
-              >
-                <Image
-                  source={testproduct}
-                  style={styles.forHotProductImage}
-                ></Image>
-                <View style={styles.forHotProductInfo}>
-                  <Text style={styles.forHotProductName}>My new product</Text>
-                  <Text style={styles.forHotProductPrice}>$10.0</Text>
-                  <Text
-                    style={styles.forHotProductDescription}
-                    numberOfLines={3}
-                  >
-                    Description about the cake is that it is
-                  </Text>
-                </View>
-              </ImageBackground>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <ImageBackground
-                source={productbackground}
-                style={styles.forHotProductContainer}
-              >
-                <Image
-                  source={testproduct}
-                  style={styles.forHotProductImage}
-                ></Image>
-                <View style={styles.forHotProductInfo}>
-                  <Text style={styles.forHotProductName}>My new product</Text>
-                  <Text style={styles.forHotProductPrice}>$10.0</Text>
-                  <Text
-                    style={styles.forHotProductDescription}
-                    numberOfLines={3}
-                  >
-                    Description about the cake is that it is
-                  </Text>
-                </View>
-              </ImageBackground>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <ImageBackground
-                source={productbackground}
-                style={styles.forHotProductContainer}
-              >
-                <Image
-                  source={testproduct}
-                  style={styles.forHotProductImage}
-                ></Image>
-                <View style={styles.forHotProductInfo}>
-                  <Text style={styles.forHotProductName}>My new product</Text>
-                  <Text style={styles.forHotProductPrice}>$10.0</Text>
-                  <Text
-                    style={styles.forHotProductDescription}
-                    numberOfLines={3}
-                  >
-                    Description about the cake is that it is
-                  </Text>
-                </View>
-              </ImageBackground>
-            </TouchableOpacity>
+                    <ImageBackground
+                      source={productbackground}
+                      style={styles.forHotProductContainer}
+                    >
+                      <Image
+                        source={{ uri: product.imagedata }}
+                        style={styles.forHotProductImage}
+                      ></Image>
+                      <View style={styles.forHotProductInfo}>
+                        <Text style={styles.forHotProductName}>
+                          {product.name_product}
+                        </Text>
+                        <Text style={styles.forHotProductPrice}>
+                          $ {product.price_product}
+                        </Text>
+                        <Text
+                          style={styles.forHotProductDescription}
+                          numberOfLines={3}
+                        >
+                          {product.description_product}
+                        </Text>
+                      </View>
+                    </ImageBackground>
+                  </TouchableOpacity>
+                ))
+              : ""}
           </View>
         </View>
       </ScrollView>

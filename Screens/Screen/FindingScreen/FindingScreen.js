@@ -37,9 +37,6 @@ const FindingScreen = ({ navigation }) => {
           <Image source={lefticon} style={styles.forLeftIcon}></Image>
         </TouchableOpacity>
         <View style={styles.forFindingArea}>
-          <TouchableOpacity>
-            <Image source={usericon} style={styles.forUserIcon}></Image>
-          </TouchableOpacity>
           <TextInput
             style={styles.forFindingInput}
             placeholder="Find your product"

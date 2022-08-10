@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     marginLeft: (width * 5) / 100,
   },
   forProductListContainer: {
-    marginTop: (width * 15) / 100,
+    marginTop: (width * 3) / 100,
   },
   forProductListTitle: {
     fontSize: (width * 4) / 100,
