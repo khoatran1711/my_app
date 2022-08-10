@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     resizeMode: "stretch",
     marginLeft: (width * 10) / 100,
   },
-  forChangingInput: {
+  forAddingInput: {
     textAlign: "center",
     fontSize: (width * 6) / 100,
     color: color.yellow,

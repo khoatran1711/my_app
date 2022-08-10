@@ -18,15 +18,7 @@ import imagebackground from "./../../Pictures/background_manage.png";
 import lefticon from "./../../Pictures/left_icon.png";
 import test_product from "./../../Pictures/test_product.png";
 
-var options = {
-  title: "Select Avatar",
-  customButtons: [{ name: "fb", title: "Choose Photo from Facebook" }],
-  storageOptions: {
-    skipBackup: true,
-    path: "images",
-  },
-};
-const ChangingScreen = ({ navigation }) => {
+const AddingScreen = ({ navigation }) => {
   const [image, setImage] = useState(null);
 
   const pickImage = async () => {
@@ -62,24 +54,24 @@ const ChangingScreen = ({ navigation }) => {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image source={lefticon} style={styles.forLeftIcon}></Image>
         </TouchableOpacity>
-        <TextInput style={styles.forChangingInput} value="ID"></TextInput>
+        <TextInput style={styles.forAddingInput} value="ID"></TextInput>
         <TextInput
-          style={styles.forChangingInput}
+          style={styles.forAddingInput}
           placeholder="Name"
           placeholderTextColor={color.yellow}
         ></TextInput>
         <TextInput
-          style={styles.forChangingInput}
+          style={styles.forAddingInput}
           placeholder="Price"
           placeholderTextColor={color.yellow}
         ></TextInput>
         <TextInput
-          style={styles.forChangingInput}
+          style={styles.forAddingInput}
           placeholder="Description Description Description Description "
           placeholderTextColor={color.yellow}
         ></TextInput>
         <TextInput
-          style={styles.forChangingInput}
+          style={styles.forAddingInput}
           placeholder="Category"
           placeholderTextColor={color.yellow}
         ></TextInput>
@@ -94,14 +86,11 @@ const ChangingScreen = ({ navigation }) => {
           <Image source={{ uri: image }} style={styles.forChaningImage} />
         )}
         <TouchableOpacity style={styles.forButton}>
-          <Text style={styles.forTextInOpaTouch}>Change</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.forButton}>
-          <Text style={styles.forTextInOpaTouch}>Delete</Text>
+          <Text style={styles.forTextInOpaTouch}>Add</Text>
         </TouchableOpacity>
       </ScrollView>
     </ImageBackground>
   );
 };
 
-export default ChangingScreen;
+export default AddingScreen;

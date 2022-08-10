@@ -8,6 +8,8 @@ import { Touchable, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import { UseGetUserInfo } from "../../../Data_query/Query.queries";
+
 import styles from "./style";
 
 import imagebackground from "./../../Pictures/background.png";
@@ -16,6 +18,8 @@ import hellobanner from "./../../Pictures/hello_banner.png";
 
 const width = Dimensions.get("screen").width;
 const UserInfo = ({ navigation }) => {
+  const information = UseGetUserInfo();
+  console.log("my infor", information);
   return (
     <ImageBackground
       source={imagebackground}
@@ -33,13 +37,25 @@ const UserInfo = ({ navigation }) => {
           <Image source={lefticon} style={styles.forLeftIcon}></Image>
         </TouchableOpacity>
         <Image source={hellobanner} style={styles.forHelloBanner}></Image>
-        <Text style={styles.forWelcomeTitle}> Welcome back, my User</Text>
+        <Text style={styles.forWelcomeTitle}>
+          {" "}
+          Welcome back, {information.user_name}
+        </Text>
         <Text style={styles.forUserInfoTitle}>Your Name</Text>
-        <TextInput style={styles.forUserInputInfo}></TextInput>
+        <TextInput
+          style={styles.forUserInputInfo}
+          defaultValue={information.user_name}
+        ></TextInput>
         <Text style={styles.forUserInfoTitle}>Your Phone</Text>
-        <TextInput style={styles.forUserInputInfo}></TextInput>
+        <TextInput
+          style={styles.forUserInputInfo}
+          defaultValue={information.user_phone}
+        ></TextInput>
         <Text style={styles.forUserInfoTitle}>Your Mail</Text>
-        <TextInput style={styles.forUserInputInfo}></TextInput>
+        <TextInput
+          style={styles.forUserInputInfo}
+          defaultValue={information.user_mail}
+        ></TextInput>
         <Text style={styles.forUserInfoTitle}>Your New Password</Text>
         <TextInput style={styles.forUserInputInfo}></TextInput>
         <TouchableOpacity style={styles.forButtonChange}>
